@@ -16,9 +16,9 @@
 	document.body.appendChild(container);
 	container.innerHTML = templet;
 	$("#vbaitan_com_send").click(function(){
-		text = $("#vbaitan_com_send textarea").text();
+		text = $("#vbaitan_com_send textarea").val();
 		send(text);
-		$("#vbaitan_com_send textarea").text("");
+		$("#vbaitan_com_send textarea").val("");
 	});
 
 	//receive message
