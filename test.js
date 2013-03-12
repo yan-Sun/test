@@ -12,7 +12,7 @@
 	getScript = document.createElement("script");
 	getScript.src = "#";
 	document.getElementsByTagName("head")[0].appendChild(getScript);
-	sendScript = document.createElment("script");
+	sendScript = document.createElement("script");
 	sendScript.src = "#";
 	document.getElementsByTagName("head")[0].appendChild(sendScript);
 
