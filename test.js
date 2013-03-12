@@ -9,10 +9,10 @@
 
 	//init action environment
 	actionScript = document.createElement("script");
-	document.getElementsByTagName("head")[0].append(actionScript);
+	document.getElementsByTagName("head")[0].appendChild(actionScript);
 
 	//init chatbox	
-	document.body.append(container);
+	document.body.appendChild(container);
 	container.innerHTML = templet;
 	$("#vbaitan_com_send").click(function(){
 		text = $("#vbaitan_com_send textarea").text();
