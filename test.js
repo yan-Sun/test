@@ -19,7 +19,7 @@
 	//init chatbox	
 	document.body.appendChild(container);
 	container.innerHTML = templet;
-	$("#vbaitan_com_send buttom").click(function(){
+	$("#vbaitan_com_send button").click(function(){
 		text = $("#vbaitan_com_send textarea").val();
 		send(text);
 		$("#vbaitan_com_send textarea").val("");
