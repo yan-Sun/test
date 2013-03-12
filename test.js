@@ -22,10 +22,11 @@
 	});
 
 	//receive message
-	setInterval(function(){
+	setTimeout(function(){
 		receive();
-		console.log("interval");
-	},3000);
+		console.log("settimeout");
+		setTimeout(argument.callee);
+	},9000);
 
 	//
 	function send(text){
@@ -36,7 +37,7 @@
 
 	//use jsonp
 	function receive(){
-		var url = vbaitan_vom_receive + "/url="+domain+"&callback=render"
+		var url = vbaitan_vom_receive + "/url="+domain+"&callback=render"+"&time="+Math.random(1);
 		actionScript.src = url;
 		console.log("recieve");
 	}
@@ -48,7 +49,7 @@
 			message = message + data[i] +"<br />";
 		}
 		$("#vbaitan_com_content").html(message);
-		console.log("show");
+		console.log("show"+data);
 	}
 
 })();
