@@ -9,6 +9,7 @@
 
 	//init action environment
 	actionScript = document.createElement("script");
+	actionScript.src = "#";
 	document.getElementsByTagName("head")[0].appendChild(actionScript);
 
 	//init chatbox	
@@ -21,20 +22,23 @@
 	});
 
 	//receive message
-	setTimeout(function(){
+	setInterval(function(){
 		receive();
+		console.log("interval");
 	},3000);
 
 	//
 	function send(text){
 		var url = vbaitan_com_send + "/url="+domain+"&message="+text+"&time="+Math.random(1);
 		actionScript.src = url;
+		console.log("send");
 	}
 
 	//use jsonp
 	function receive(){
 		var url = vbaitan_vom_receive + "/url="+domain+"&callback=render"
 		actionScript.src = url;
+		console.log("recieve");
 	}
 
 	//render data
@@ -44,6 +48,7 @@
 			message = message + data[i] +"<br />";
 		}
 		$("#vbaitan_com_content").html(message);
+		console.log("show");
 	}
 
 })();
