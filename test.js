@@ -5,12 +5,16 @@
 		templet = "<div id='vbaitan_com_box'><div id='vbaitan_com_content'></div><div id='vbaitan_com_send'><button>send</button><textarea></textarea></div></div>",
 		container = document.createElement("div"),
 		domain = window.location.host,
-		actionScript;
+		getScript,
+		sendScript;
 
 	//init action environment
-	actionScript = document.createElement("script");
-	actionScript.src = "#";
-	document.getElementsByTagName("head")[0].appendChild(actionScript);
+	getScript = document.createElement("script");
+	getScript.src = "#";
+	document.getElementsByTagName("head")[0].appendChild(getScript);
+	sendScript = document.createElment("script");
+	sendScript.src = "#";
+	document.getElementsByTagName("head")[0].appendChild(sendScript);
 
 	//init chatbox	
 	document.body.appendChild(container);
@@ -31,14 +35,14 @@
 	//
 	function send(text){
 		var url = vbaitan_com_send + "/url="+domain+"&message="+text+"&time="+Math.random(1);
-		actionScript.src = url;
+		sendScript.src = url;
 		console.log("send");
 	}
 
 	//use jsonp
 	function receive(){
 		var url = vbaitan_vom_receive + "/url="+domain+"&callback=render"+"&time="+Math.random(1);
-		actionScript.src = url;
+		getScript.src = url;
 		console.log("recieve");
 	}
 
