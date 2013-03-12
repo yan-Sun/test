@@ -1,6 +1,6 @@
 (function(){
-  var vbaitan_com_send = "www.vbaitan.com/accept.php",
-		vbaitan_vom_receive = "www.vbaitan.com/jsonp.php",
+  var vbaitan_com_send = "http://www.vbaitan.com/accept.php",
+		vbaitan_vom_receive = "http://www.vbaitan.com/jsonp.php",
 		text,
 		templet = "<div id='vbaitan_com_box'><div id='vbaitan_com_content'></div><div id='vbaitan_com_send'><button>send</button><textarea></textarea></div></div>",
 		container = document.createElement("div"),
