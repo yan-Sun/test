@@ -25,7 +25,7 @@
 	setTimeout(function(){
 		receive();
 		console.log("settimeout");
-		setTimeout(argument.callee);
+		setTimeout(arguments.callee);
 	},9000);
 
 	//
