@@ -13,7 +13,11 @@
 			res = window.name.split(split);
 			message = res[0];
 			domain = res[1];
-			$.post(vbaitan_com_send,message,function(data){
+			var obj = {
+				"message" : message,
+				"url" : domain
+			};
+			$.post(vbaitan_com_send,obj,function(data){
 				window.name = data;
 				window.location.href = domain;
 			});
