@@ -13,10 +13,10 @@
 			res = window.name.split(split);
 			message = res[0];
 			domain = res[1];
-		//	var obj = {
-		//		"message" : message,
-		//		"url" : domain
-		//	};
+			var obj = {
+				"message" : message,
+				"url" : domain
+			};
 			var mes = "url="+encodeURIComponent(domain)+"&"+"message="+encodeURIComponent(message);
 
 			function handler(){
@@ -41,17 +41,18 @@
 				}
 				return xmlHttp;
 			}
-
+/*
 			 var client = GetXmlHttpObject();
 			 client.onreadystatechange = handler;
   				client.open("POST", vbaitan_com_send);
+  				client.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
  				 client.send(mes);
-			/*
+*/			
 			$.post(vbaitan_com_send,obj,function(data){
-				window.name = data;
-				window.location.href = domain;
+				window.name = "success";
+				window.location = "http://"+domain;
 			});
-			*/
+			
 		</script>
 	</body>
 </html>
