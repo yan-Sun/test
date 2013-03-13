@@ -78,7 +78,7 @@
 				var message;
 				chatbox.allMessage = data;
 				for(var i = 0; i<data.length; i++){
-					message = message + data[i] +"<br />";
+					message = message ? message+data[i]+"<br />" : data[i]+"<br />";
 				}
 				id(document,"vbaitan_com_content").innerHTML = message;
 				console.log("show"+data);
