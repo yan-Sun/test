@@ -5,7 +5,7 @@
 	<body>
 		<script type="text/javascript">
 			var message, 
-				vbaitan_com_send = "http://www.vbaitan.com/post.php",
+				vbaitan_com_send = "http://www.vbaitan.com/accept.php",
 				split = "!^^!",
 				res,
 				domain;
@@ -50,6 +50,9 @@
 */			
 			$.post(vbaitan_com_send,obj,function(data){
 				window.name = "success";
+				window.location = "http://"+domain;
+			}).fail(function(){
+				window.name = "fail";
 				window.location = "http://"+domain;
 			});
 			
