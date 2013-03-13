@@ -62,8 +62,8 @@
 			};
     	},
     	send : function(message){
-    		 var state = 0, 
-   			 var iframe = document.createElement('iframe'),
+    		 var state = 0;
+   			 var iframe = document.createElement('iframe');
     		 var loadfn = function() {
     		 	//即将把域切换为代理域，并传message到代理域
     		 	if(state === 0){
