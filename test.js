@@ -5,15 +5,19 @@
 	  	templet = "<div id='vbaitan_com_box'><div id='vbaitan_com_content'></div><div id='vbaitan_com_send'><button>send</button><textarea></textarea></div></div>",
 	  	container = document.createElement("div"),
 	  	domain = window.location.host,
-	  	jsonpTimer;
+	  	jsonpTimer,
+	  	//代理文件url
+	  	vbaitan_proxy = "",
+	  	response,
+	  	split = "!^^!";
 
     var jsonp = {
     	initGet : function(){
 			jsonpTimer = setTimeout(function(){
 				jsonp.get();
 				console.log("settimeout");
-				setTimeout(arguments.callee,3000);
-			},3000);
+				setTimeout(arguments.callee,9000);
+			},9000);
     	},
     	initSend : function(){
 			chatbox.button.onclick = function(){
@@ -49,11 +53,41 @@
     };
 
     var iframe = {
+    	//通过window.name跨域传送数据
     	initSend : function(){
-    		var sendIframe = document.createElement("iframe");
-    		sendIframe.src = "#";
-    		sendIframe.style.display = "none";
-    		document.body.appendChild(sendIframe);
+    		chatbox.button.onclick = function(){
+				chatbox.message = chatbox.area.value;
+				iframe.send(encodeURIComponent(chatbox.message));
+				chatbox.area.value = "";
+			};
+    	},
+    	send : function(message){
+    		 var state = 0, 
+   			 var iframe = document.createElement('iframe'),
+    		 var loadfn = function() {
+    		 	//即将把域切换为代理域，并传message到代理域
+    		 	if(state === 0){
+    		 		state = 1;
+            		iframe.contentWindow.name = message +split +domain; //传递当前域给其他域，从而可以从其他域转到当前域
+            		iframe.contentWindow.location = vbaitan_proxy;
+            	//域为代理域，准备切换为当前域
+    		 	}else if(state === 1){
+    		 		state = 2;
+    		 	}else if(state === 2){
+    		 		response = iframe.contentWindow.name;
+    		 		//移除iframe
+    		 		document.body.removeChild(iframe);
+    		 	}
+        
+   			 };
+    		iframe.src = domain;
+    		iframe.style.display = "none";
+    		if (iframe.attachEvent) {
+       	   		 iframe.attachEvent('onload', loadfn);
+   		    } else {
+       			 iframe.onload  = loadfn;
+  		    }
+    		document.body.appendChild(iframe);
     	}
     };
 
