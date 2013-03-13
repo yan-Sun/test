@@ -24,7 +24,7 @@
     		sendScript = document.createElement("script");
 			sendScript.src = "#";
 			name(document,"head")[0].appendChild(sendScript);
-			addListener(chatbox.button,function(){
+			addListener(chatbox.button,"click",function(){
 				chatbox.message = chatbox.area.value;
 				jsonp.send(encodeURIConponent(chatbox.message));
 				chatbox.area.value = "";
