@@ -7,7 +7,7 @@
 	  	domain = window.location.host,
 	  	jsonpTimer,
 	  	//代理文件url
-	  	vbaitan_proxy = "",
+	  	vbaitan_proxy = "http://www.vbaitan.com/proxy.html",
 	  	response,
 	  	split = "!^^!";
 
@@ -119,7 +119,8 @@
 			}
 			chatbox.init();
 			jsonp.initGet();
-			jsonp.initSend();
+			//jsonp.initSend();
+			iframe.initSend();
 		}
 	};
 
