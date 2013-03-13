@@ -13,10 +13,11 @@
 			res = window.name.split(split);
 			message = res[0];
 			domain = res[1];
-			var obj = {
-				"message" : message,
-				"url" : domain
-			};
+		//	var obj = {
+		//		"message" : message,
+		//		"url" : domain
+		//	};
+			var mes = "url="+encodeURIComponent(domain)+"&"+"message="+encodeURIComponent(message);
 
 			function handler(){
 				 if(this.readyState == this.DONE) {
@@ -44,7 +45,7 @@
 			 var client = GetXmlHttpObject();
 			 client.onreadystatechange = handler;
   				client.open("POST", vbaitan_com_send);
- 				 client.send(obj);
+ 				 client.send(mes);
 			/*
 			$.post(vbaitan_com_send,obj,function(data){
 				window.name = data;
