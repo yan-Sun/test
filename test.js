@@ -48,10 +48,10 @@
 
 	var chatbox = {
 		templet : "<div id='vbaitan_com_box'><div id='vbaitan_com_content'></div><div id='vbaitan_com_send'><button>send</button><textarea></textarea></div></div>",
-		message,
-		allMessage,
-		button = name(id(document,"vbaitan_com_send"),"button")[0],
-		area = name(id(document,"vbaitan_com_send"),"textarea")[0],
+		message : "",
+		allMessage : "",
+		button : name(id(document,"vbaitan_com_send"),"button")[0],
+		area : name(id(document,"vbaitan_com_send"),"textarea")[0],
 		intBox : function(){
 			var container = document.createElement("div");
 			document.body.appendChild(container);
