@@ -12,8 +12,8 @@
 			jsonpTimer = setTimeout(function(){
 				jsonp.get();
 				console.log("settimeout");
-				setTimeout(arguments.callee,9000);
-			},9000);
+				setTimeout(arguments.callee,3000);
+			},3000);
     	},
     	initSend : function(){
 			chatbox.button.onclick = function(){
