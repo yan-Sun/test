@@ -67,13 +67,16 @@
     		 var loadfn = function() {
     		 	//即将把域切换为代理域，并传message到代理域
     		 	if(state === 0){
+    		 		console.log("state 0");
     		 		state = 1;
             		iframe.contentWindow.name = message +split +domain; //传递当前域给其他域，从而可以从其他域转到当前域
             		iframe.contentWindow.location = vbaitan_proxy;
             	//域为代理域，准备切换为当前域
     		 	}else if(state === 1){
+    		 		console.log("state 1");
     		 		state = 2;
     		 	}else if(state === 2){
+    		 		console.log("state 2");
     		 		response = iframe.contentWindow.name;
     		 		//移除iframe
     		 		document.body.removeChild(iframe);
