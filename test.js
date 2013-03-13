@@ -31,12 +31,12 @@
 			};
     	},
     	send : function(text){
-    		var url = vbaitan_com_send + "/url="+domain+"&message="+text+"&time="+Math.random(1);
+    		var url = vbaitan_com_send + "url="+domain+"&message="+text+"&time="+Math.random(1);
 			sendScript.src = url;
 			console.log("send");
     	},
     	get : function(){
-    		var url = vbaitan_vom_receive + "/url="+domain+"&callback=render"+"&time="+Math.random(1);
+    		var url = vbaitan_vom_receive + "url="+domain+"&callback=render"+"&time="+Math.random(1);
 			getScript.src = url;
 			console.log("recieve");
     	}
