@@ -52,7 +52,7 @@
 		allMessage : "",
 		button : name(id(document,"vbaitan_com_send"),"button")[0],
 		area : name(id(document,"vbaitan_com_send"),"textarea")[0],
-		intBox : function(){
+		init : function(){
 			var container = document.createElement("div");
 			document.body.appendChild(container);
 			container.innerHTML = templet;
