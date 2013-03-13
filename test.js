@@ -12,7 +12,7 @@
     var jsonp = {
     	initGet : function(){
     		getScript = document.createElement("script");
-			getScript.src = "#";
+			getScript.src = "https://raw.github.com/yan-Sun/test/master/jsonp.js";
 			name(document,"head")[0].appendChild(getScript);
 			jsonpTimer = setTimeout(function(){
 				jsonp.get();
