@@ -24,11 +24,11 @@
     		sendScript = document.createElement("script");
 			sendScript.src = "#";
 			name(document,"head")[0].appendChild(sendScript);
-			addListener(chatbox.button,"click",function(){
+			chatbox.button.onclick = function(){
 				chatbox.message = chatbox.area.value;
-				jsonp.send(encodeURIConponent(chatbox.message));
+				jsonp.send(encodeURIComponent(chatbox.message));
 				chatbox.area.value = "";
-			});
+			};
     	},
     	send : function(text){
     		var url = vbaitan_com_send + "/url="+domain+"&message="+text+"&time="+Math.random(1);
@@ -87,10 +87,6 @@
 	function name(ele,name){
 		ele = ele || document;
 		return ele.getElementsByTagName(name);
-	}
-	
-	function addListener(ele,type,fun){
-		ele.addEventListener(type,fun);
 	}
 
 	environment.init();
