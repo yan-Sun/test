@@ -15,7 +15,7 @@
 			getScript.src = "#";
 			name(document,"head")[0].appendChild(getScript);
 			jsonpTimer = setTimeout(function(){
-				this.get();
+				jsonp.get();
 				console.log("settimeout");
 				setTimeout(arguments.callee,9000);
 			},9000);
@@ -26,7 +26,7 @@
 			name(document,"head")[0].appendChild(sendScript);
 			chatbox.button.onClick = function(){
 				chatbox.message = chatbox.area.value;
-				this.send(encodeURIConponent(chatbox.message));
+				jsonp.send(encodeURIConponent(chatbox.message));
 				chatbox.area.value = "";
 			};
     	},
@@ -50,12 +50,14 @@
 		templet : "<div id='vbaitan_com_box'><div id='vbaitan_com_content'></div><div id='vbaitan_com_send'><button>send</button><textarea></textarea></div></div>",
 		message : "",
 		allMessage : "",
-		button : name(id(document,"vbaitan_com_send"),"button")[0],
-		area : name(id(document,"vbaitan_com_send"),"textarea")[0],
+		button : null,
+		area : null,
 		init : function(){
 			var container = document.createElement("div");
 			document.body.appendChild(container);
 			container.innerHTML = templet;
+			this.button = name(id(document,"vbaitan_com_send"),"button")[0],
+			this.area = name(id(document,"vbaitan_com_send"),"textarea")[0],
 		}
 	};
 	
