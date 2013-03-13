@@ -5,15 +5,10 @@
 	  	templet = "<div id='vbaitan_com_box'><div id='vbaitan_com_content'></div><div id='vbaitan_com_send'><button>send</button><textarea></textarea></div></div>",
 	  	container = document.createElement("div"),
 	  	domain = window.location.host,
-	  	getScript,
-	  	sendScript,
 	  	jsonpTimer;
 
     var jsonp = {
     	initGet : function(){
-    		getScript = document.createElement("script");
-			getScript.src = "https://raw.github.com/yan-Sun/test/master/jsonp.js";
-			name(document,"head")[0].appendChild(getScript);
 			jsonpTimer = setTimeout(function(){
 				jsonp.get();
 				console.log("settimeout");
@@ -21,9 +16,6 @@
 			},9000);
     	},
     	initSend : function(){
-    		sendScript = document.createElement("script");
-			sendScript.src = "#";
-			name(document,"head")[0].appendChild(sendScript);
 			chatbox.button.onclick = function(){
 				chatbox.message = chatbox.area.value;
 				jsonp.send(encodeURIComponent(chatbox.message));
@@ -31,20 +23,38 @@
 			};
     	},
     	send : function(text){
+    		var send;
+    		if(send = id(document,"sendScript")){
+    			name(document,"head")[0].removeChild(send);
+    		}
+    		var sendScript = document.createElement("script");
     		var url = vbaitan_com_send + "url="+domain+"&message="+text+"&time="+Math.random(1);
 			sendScript.src = url;
+			sendScript.id = "sendScript";
+			name(document,"head")[0].appendChild(sendScript);
 			console.log("send");
     	},
     	get : function(){
-    	//	var url = vbaitan_vom_receive + "url="+domain+"&callback=render"+"&time="+Math.random(1);
-    		var url = "https://raw.github.com/yan-Sun/test/master/jsonp.js"+"?time="+Math.random(1);
+    		var get;
+    		if(get = id(document,"getScript")){
+    			name(document,"head")[0].removeChild(get);
+    		}
+    		var getScript = document.createElement("script");
+    		var url = vbaitan_vom_receive + "url="+domain+"&callback=render"+"&time="+Math.random(1);
 			getScript.src = url;
+			getScript.id = "getScript";
+			name(document,"head")[0].appendChild(getScript);
 			console.log("recieve");
     	}
     };
 
     var iframe = {
-    	
+    	initSend : function(){
+    		var sendIframe = document.createElement("iframe");
+    		sendIframe.src = "#";
+    		sendIframe.style.display = "none";
+    		document.body.appendChild(sendIframe);
+    	}
     };
 
 	var chatbox = {
@@ -61,7 +71,7 @@
 			this.area = name(id(document,"vbaitan_com_send"),"textarea")[0];
 		}
 	};
-	
+
 	var environment = {
 		init : function(){
 			window.render = function (data){
@@ -70,7 +80,7 @@
 				for(var i = 0; i<data.length; i++){
 					message = message + data[i] +"<br />";
 				}
-				$("#vbaitan_com_content").html(message);
+				id(document,"vbaitan_com_content").innerHTML = message;
 				console.log("show"+data);
 			}
 			chatbox.init();
@@ -78,7 +88,7 @@
 			jsonp.initSend();
 		}
 	};
-	
+
 
 	function id(ele,id){
 		ele = ele || document;
