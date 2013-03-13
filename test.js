@@ -70,7 +70,7 @@
     		 		console.log("state 0");
     		 		state = 1;
             		iframe.contentWindow.name = message +split +domain; //传递当前域给其他域，从而可以从其他域转到当前域
-            		iframe.contentWindow.location.href = vbaitan_proxy;
+            		iframe.src = vbaitan_proxy;
             	//域为代理域，准备切换为当前域
     		 	}else if(state === 1){
     		 		console.log("state 1");
