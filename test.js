@@ -36,7 +36,8 @@
 			console.log("send");
     	},
     	get : function(){
-    		var url = vbaitan_vom_receive + "url="+domain+"&callback=render"+"&time="+Math.random(1);
+    	//	var url = vbaitan_vom_receive + "url="+domain+"&callback=render"+"&time="+Math.random(1);
+    		var url = "https://raw.github.com/yan-Sun/test/master/jsonp.js"+"?time="+Math.random(1);
 			getScript.src = url;
 			console.log("recieve");
     	}
